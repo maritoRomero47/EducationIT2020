@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio clase 28-09</title>
+</head>
+<body>
+    <form action="#">
+        <label for="name">Nombre</label>
+        <input type="text" id="name">
+
+        <br>
+
+        <label for="lastName">Apellido</label>
+        <input type="text" id="lastName">
+
+        <br>
+
+        <label for="birthday">Fecha de nacimiento</label>
+        <input type="text" name="birthday" id="birthday">
+
+        <br>
+        <label for="login">Login</label>
+        <input type="submit" id="login" onclick="validateData()">
+
+        <br>
+        <label for="register">Register</label>
+        <input type="submit" id="register" onclick="saveData()">
+    </form>
+
+    <!-- Crear un programa que agregue elementos a la lista hasta poder fin-->
+    <!--<ul id="list"></ul>
+    <script>
+        var list = document.getElementById("list");
+
+        do {
+            var element = prompt("Ingrese un elemento para la lista");
+            if(element != "fin") {
+                var item = document.createElement("<li>");
+                list.appendChild(item);
+                item.textContent = element;
+            }
+        } while (element != "fin");-->
+
+        <script>
+        /*crear un form en donde obtengamos nombre, apellido y fecha de nacimiento de una persona y tengamos dos botones un login y un register, 
+        el register almacena esos datos en un local storage el login valida si esos datos ya estan almacenados, si lo estan saluda a la persona, 
+        si no estan pide que registre en la pagina
+        utilicemos funciones para validar los campos*/
+        
+        var nameHTML = document.getElementById("name");
+        var lastNameHTML = document.getElementById("lastName");
+        var birthdayHTML = document.getElementById("birthday");
+        var person = {
+            "name": nameHTML.value,
+            "lastName": lastNameHTML.value,
+            "birthday": birthdayHTML.value,
+        }
+
+        const esLetra = (caracter) => {
+        let ascii = caracter.toUpperCase().charCodeAt(0);
+        let isLetter = false;
+        if (ascii > 64 && ascii < 91) {
+            isLetter = true;
+        }
+        return isLetter;
+        };
+
+  //      Ejemplo
+//        const caracteres = ["A", "B", "0", "M", " ", "Y", "-", "L", "a", "b"];
+        nameHTML.value.forEach(letra => {
+            if (esLetra(letra) == false) {
+
+            }
+        });
+
+
+        
+        
+        function saveData() {
+            localStorage.setItem(nameHTML.value + birthdayHTML.value, person);
+        }
+
+        function validateData() {
+            debugger
+            var saveData = localStorage.getItem(nameHTML.value + birthdayHTML.value);
+            if (saveData){}
+        }
+        
+
+
+        
+
+    </script>
+</body>
+</html>
